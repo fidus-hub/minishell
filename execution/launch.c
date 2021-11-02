@@ -28,6 +28,14 @@ int	fork_last_process(int in, int *pipefd, t_cmds *cmd_h)
 		}
 		if (pipefd[1] > 2)
 			close(pipefd[1]); */
+
+
+		// redirection part
+		// if (cmd_h->file_h->filename != NULL)
+		redirection(cmd_h);
+
+
+		// execute
 		if (execvp(cmd_h->args[0], cmd_h->args) == -1)
 		{
 			printf("%s\n", strerror(errno));
@@ -45,6 +53,14 @@ int	fork_process(int in, int *pipefd, t_cmds *cmd_h)
 	if (g_variables.pid == 0)
 	{
 		// dup2_in_out(in, pipefd[1]);
+
+
+		// redirection part
+		// if (cmd_h->file_h->filename != NULL)
+		redirection(cmd_h);
+
+
+		// execute
 		if (execvp(cmd_h->args[0], cmd_h->args) == -1)
 		{
 			printf("%s\n", strerror(errno));
@@ -73,8 +89,8 @@ int launch(t_headers *header)
 			close(pipefd[1]);
 		if (in != STDIN_FILENO)
 			close(in);
-		in = pipefd[0];
-		header->cmd_h = header->cmd_h->next; */
+		in = pipefd[0]; */
+		header->cmd_h = header->cmd_h->next;
 	}
 
 	// TO-DO : EXECUTE LAST COMMAND
