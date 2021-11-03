@@ -15,7 +15,7 @@ void	redirection_inside_loop(int *in, int *out, t_file *file_h)
 	{
 		if (*in != STDIN_FILENO)
 			close(*in);
-		*out = open(file_h->filename, O_RDONLY, 0644);
+		*in = open(file_h->filename, O_RDONLY, 0644);
 	}
 }
 
@@ -24,7 +24,7 @@ void	redirection(t_cmds *cmd_h)
 	int in = STDIN_FILENO;
 	int out = STDOUT_FILENO;
 	
-	while (cmd_h->file_h->next != NULL)
+	while (cmd_h->file_h != NULL)
 	{
 		redirection_inside_loop(&in, &out, cmd_h->file_h);
 		cmd_h->file_h = cmd_h->file_h->next;
