@@ -7,9 +7,9 @@ void	redirection_inside_loop(int *in, int *out, t_file *file_h)
 		if (*out != STDOUT_FILENO)
 			close(*out);
 		if (file_h->type == 1)
-			*out = open(file_h->filename, O_WRONLY | O_CREAT | O_APPEND, 0644);
-		else if (file_h->type == 2)
 			*out = open(file_h->filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		else if (file_h->type == 2)
+			*out = open(file_h->filename, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	}
 	if (file_h->filename && file_h->type == 3)
 	{
