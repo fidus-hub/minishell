@@ -21,13 +21,15 @@ void	redirection_inside_loop(int *in, int *out, t_file *file_h)
 
 void	redirection(t_cmds *cmd_h)
 {
+	t_file *nfile;
+	nfile = cmd_h->file_h;
 	int in = STDIN_FILENO;
 	int out = STDOUT_FILENO;
 	
-	while (cmd_h->file_h != NULL)
+	while (nfile != NULL)
 	{
-		redirection_inside_loop(&in, &out, cmd_h->file_h);
-		cmd_h->file_h = cmd_h->file_h->next;
+		redirection_inside_loop(&in, &out, nfile);
+		nfile = nfile->next;
 	}
 	if (in > 2)
 	{
