@@ -4,6 +4,11 @@
   Function Declarations for builtin shell commands:
  */
 int	cd(char **args);
+int	echo(char **args);
+//int pwd(char **args);
+//int	export(char **args);
+//int	unset(char **args);
+//int	env(char **args);
 //int	exit(char **args);
 
 /*
@@ -12,13 +17,23 @@ int	cd(char **args);
 char	*builtin_str[] =
 {
 	"cd",
-	"exit"
+	"echo"
+/* 	"exit",
+	"pwd",
+	"export",
+	"unset",
+	"env", */
 };
 
 int (*builtin_func[]) (char **) =
 {
 	&cd,
-	&exit
+	&echo
+	//&exit,
+	//&pwd,
+	//&export,
+	//&unset,
+	//&env,
 };
 
 
@@ -45,6 +60,31 @@ int	cd(char **args)
 	}
 	return (1);
 }
+
+
+
+
+
+
+//int	pwd(char **args)
+//{
+
+//}
+
+//int	export(char **args)
+//{
+
+//}
+
+//int	unset(char **args)
+//{
+
+//}
+
+//int	env(char **args)
+//{
+
+//}
 
 //int	exit(char **args)
 //{

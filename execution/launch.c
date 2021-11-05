@@ -18,8 +18,8 @@ int	fork_last_process(int in, int *pipefd, t_cmds *cmd_h)
 {
 	(void)in;
 	(void)pipefd;
-	g_variables.pid = fork();
-	if (g_variables.pid == 0)
+	g_var.pid = fork();
+	if (g_var.pid == 0)
 	{
 		 if (in != 0)
 		{
@@ -49,8 +49,8 @@ int	fork_process(int in, int *pipefd, t_cmds *cmd_h)
 {
 	(void)in;
 	(void)pipefd;
-	g_variables.pid = fork();
-	if (g_variables.pid == 0)
+	g_var.pid = fork();
+	if (g_var.pid == 0)
 	{
 		dup2_in_out(in, pipefd[1]);
 
@@ -104,5 +104,5 @@ int launch(t_headers *header)
 		close(in); 
 	while (waitpid(-1, &status, 0) > 0)
 		if (WIFEXITED(status))
-			g_variables.exit_status = WEXITSTATUS(status);
+			g_var.exit_status = WEXITSTATUS(status);
 }

@@ -62,13 +62,16 @@ typedef struct s_headers
 /*
 	execution part structure
 */
-typedef struct	s_variables
+typedef struct	s_var
 {
 	pid_t	pid;
 	int		exit_status;
-}				t_variables;
+	int		echo_flag;
+	int		echo_i;
+	int		echo_j;
+}				t_var;
 
-t_variables	g_variables;
+t_var	g_var;
 
 /*
 libft
@@ -125,6 +128,7 @@ int		launch(t_headers *header);
 int		num_builtins();
 int		cd(char **args);
 int		execute(t_headers *header);
+int		echo(char **args);
 
 void	redirection(t_cmds *cmd_h);
 #endif
