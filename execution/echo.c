@@ -40,11 +40,11 @@ int	echo(char **args)
     {
         printf("%s", args[i]);
         if(args[i + 1] != NULL)
-            printf("%c", ' ');
+            printf(" ");
         i++;
     }
     if(flag == 0)
-        printf("%c", '\n');
+        printf("\n");
     return(1);
 
 }
