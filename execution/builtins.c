@@ -62,7 +62,7 @@ int	cd(char **args)
 	{
 		if (chdir(args[1]) != 0)
 		{
-			printf("error");
+			perror("grissen");
 		}
 	}
 	return (1);
@@ -70,21 +70,21 @@ int	cd(char **args)
 
 int	pwd(char **args)
 {
-    long n;
-    char *buf;
+	long n;
+	char *buf;
 
 	buf = getcwd(NULL, 0);
-    if (buf == NULL)
+	if (buf == NULL)
 	{
-        perror("getcwd");
-        exit(EXIT_FAILURE);
-    }
+		perror("getcwd");
+		exit(EXIT_FAILURE);
+	}
 	else
 	{
-        printf("%s\n", buf);
-    }
-    free(buf);
-    return (EXIT_SUCCESS);
+		printf("%s\n", buf);
+	}
+	free(buf);
+	return (EXIT_SUCCESS);
 }
 
 //int	export(char **args)
