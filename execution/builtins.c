@@ -6,8 +6,8 @@
 int	cd(char **args);
 int	echo(char **args);
 int pwd(char **args);
-//int	env(char **args);
 int	eexit(char **args);
+//int	env(char **args);
 //int	export(char **args);
 //int	unset(char **args);
 
@@ -20,8 +20,8 @@ char	*builtin_str[] =
 	"cd",
 	"echo",
 	"pwd",
+	"exit",
 	//"env",
- 	"exit"
 	//"export",
 	//"unset",
 };
@@ -31,8 +31,8 @@ int (*builtin_func[]) (char **) =
 	&cd,
 	&echo,
 	&pwd,
+	&eexit,
 	//&env,
-	&eexit
 	//&export,
 	//&unset,
 };
@@ -104,5 +104,38 @@ int	pwd(char **args)
 
 int	eexit(char **args)
 {
-	return (0);
+	int j;
+
+	if (!args[1])
+	{
+		printf("exit\n");
+		exit(0);
+	}
+	j = 0;
+	while (args[1][j])
+	{
+		if (!(isdigit(args[1][j])))
+		{
+			printf("exit\n");
+			printf("%s %s: %s \n","minishell: exit:",args[1], "numeric argument required");
+			exit(255);
+			break;
+		}
+		j++;
+	}
+	if (isdigit(*args[1]))
+	{
+		g_var.exit_status = atoi(args[1]);
+	
+		printf("exit\n");
+		exit(g_var.exit_status);
+	}
+	if (args[2] != NULL)
+	{
+		printf("exit\n");
+		printf("minishell: exit: too many arguments\n");
+		g_var.exit_status = 1;
+	}
+
+	
 }

@@ -11,7 +11,7 @@ int	execute(t_headers *header)
 		return (1);
 	}
 	i = 0;
-	while(i < 3)
+	while(i < 4)
 	{
 		if (strcmp(ncmd->args[0], builtin_str[i]) == 0)
 			return (*builtin_func[i])(ncmd->args);
