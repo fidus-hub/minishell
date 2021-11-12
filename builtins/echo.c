@@ -31,6 +31,8 @@ int check_flag(char **args, int *x)
 
 int	echo(char **args)
 {
+    	dprintf(2,"-----------%d\n", getpid());
+
     int i;
     int flag;
 
