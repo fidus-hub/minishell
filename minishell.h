@@ -126,9 +126,9 @@ void	ft_delbotcmd(t_headers *head);
 
 int		launch(t_headers *header);
 int		num_builtins();
-int		cd(char **args);
+int		cd(t_headers *headers);
 int		execute(t_headers *header);
-int		echo(char **args);
-
+int		echo(t_headers *headers);
+int		export(t_headers *headers);
 void	redirection(t_cmds *cmd_h);
 #endif

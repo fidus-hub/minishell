@@ -1,7 +1,10 @@
 #include "../minishell.h"
 
-int	cd(char **args)
+int	cd(t_headers *headers)
 {
+	char **args;
+
+	args = headers->cmd_h->args;
 	if (!args[1])
 	{
 		char*buf = getenv("HOME");

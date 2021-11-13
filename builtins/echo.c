@@ -29,13 +29,13 @@ int check_flag(char **args, int *x)
 }
 
 
-int	echo(char **args)
+int	echo(t_headers *headers)
 {
-    	dprintf(2,"-----------%d\n", getpid());
-
     int i;
     int flag;
+    char **args;
 
+    args = headers->cmd_h->args;
     flag = check_flag(args, &i);
 
     while(args[i])

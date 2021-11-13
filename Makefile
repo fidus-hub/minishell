@@ -6,7 +6,7 @@ SRC =	minishell.c libft0.c ft_split.c toke.c ft_tst.c save_env.c error.c \
 		free.c fill_cmd_struct.c ft_strjoin.c redirections.c \
 		libft1.c ./builtins/builtins.c ./execution/exec.c ./execution/launch.c \
 		./execution/redirection.c ./builtins/echo.c ./builtins/cd.c \
-		./builtins/eexit.c ./builtins/pwd.c ./builtins/env.c \
+		./builtins/eexit.c ./builtins/pwd.c ./builtins/env.c ./builtins/export.c \
 #SRC_BONUS =	checker.c get_next_line.c get_next_line_utils.c pile.c \
 			operations.c to_check.c utils.c free.c
 OBJECT = $(SRC:.c=.o)

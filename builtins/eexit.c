@@ -1,9 +1,11 @@
 #include "../minishell.h"
 
-int	eexit(char **args)
+int	eexit(t_headers *headers)
 {
 	int j;
+	char **args;
 
+	args = headers->cmd_h->args;
 	if (!args[1])
 	{
 		printf("exit\n");

@@ -1,33 +1,17 @@
 #include "../minishell.h"
 
-int	env(t_env *env_h)
+int	env(t_headers *headers)
 {
-    t_env *tmp;
+    t_env *env_h;
 
-    tmp = env_h;
-    if (!tmp)
+    env_h = headers->env_h;
+
+    if (!env_h)
         return (-1);
-    while (tmp)
+    while (env_h)
     {
-        printf("%s=%s\n", tmp->var, tmp->val);
-        tmp = tmp->suivant;
+        printf("%s=%s\n", env_h->var, env_h->val);
+        env_h = env_h->suivant;
     }
-    t_env*newnode = new_node(args[1], args[2]);
-    tmp->suivant = newnode;
-    newnode->preced = tmp;
     return (0);
-
-
-}
-
-t_env   *new_node(char *var, char *val)
-{
-    t_env   *new;
-
-    new = malloc(sizeof(t_env));
-    new->var = var;
-    new->val = val;
-    new->preced = NULL;
-    new->suivant = NULL;
-    return new;
 }
