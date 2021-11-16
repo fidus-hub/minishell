@@ -1,5 +1,15 @@
 #include "../minishell.h"
+t_env *new_node(char *var, char *val)
+{
+    t_env *new;
 
+    new = malloc(sizeof(t_env));
+    new->var = var;
+    new->val = val;
+    new->preced = NULL;
+    new->suivant = NULL;
+    return new;
+}
 int	export(t_headers *headers)
 {
     t_env *env_h;
@@ -16,8 +26,6 @@ int	export(t_headers *headers)
 
     if(!args[1])
     {
-        if (!tmp)
-        return (-1);
         while (tmp)
         {
         printf("%s=%s\n", tmp->var, tmp->val);
@@ -25,24 +33,20 @@ int	export(t_headers *headers)
         }
         return (0);
     }
+    else
+    {
+        t_env *newnode = new_node(args[1], args[2]);
+  
+        while (tmp->suivant)
+        {
+            tmp = tmp->suivant;
+        }
+        tmp->suivant = newnode;
+        newnode->preced = tmp;
+    }
 }
 
-    t_env*newnode = new_node(args[1], args[2]);
-    tmp->suivant = newnode;
-    newnode->preced = tmp;
-    return (0);
 
 
 // }
 
-    t_env *new_node(char *var, char *val)
-{
-    t_env *new;
-
-    new = malloc(sizeof(t_env));
-    new->var = var;
-    new->val = val;
-    new->preced = NULL;
-    new->suivant = NULL;
-    return new;
-}

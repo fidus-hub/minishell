@@ -7,26 +7,26 @@ void	ft_delbottom(t_headers *head)
 
 	if (head != NULL && head->env_h != NULL)
 	{
-		to_delete = head->env_f;
-		if (!to_delete->preced)
-		{
-			free(to_delete->val);
-			free(to_delete->var);
-			free(to_delete);
-			head->env_h = NULL;
-			head->env_f = NULL;
-			to_delete = NULL;
-		}
-		else
-		{
-			stack = to_delete->preced;
-			head->env_f = stack;
-			stack->suivant = NULL;
-			free(to_delete->val);
-			free(to_delete->var);
-			free(to_delete);
-			to_delete = NULL;
-		}
+		// to_delete = head->env_f;
+		// if (!to_delete->preced)
+		// {
+		// 	free(to_delete->val);
+		// 	free(to_delete->var);
+		// 	free(to_delete);
+		// 	head->env_h = NULL;
+		// 	head->env_f = NULL;
+		// 	to_delete = NULL;
+		// }
+		// else
+		// {
+		// 	stack = to_delete->preced;
+		// 	head->env_f = stack;
+		// 	stack->suivant = NULL;
+		// 	free(to_delete->val);
+		// 	free(to_delete->var);
+		// 	free(to_delete);
+		// 	to_delete = NULL;
+		// }
 	}
 }
 
